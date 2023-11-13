@@ -4,10 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int ANA_BinTree_data_type;
-#define ANA_BinTree_OUTPUT_F "%d"
-
-const ANA_BinTree_data_type ANA_BinTree_POISON = -31415926;
+#include "../ANA_BinTree_config.h"
 
 typedef size_t ANA_BinTree_error_type;
 
