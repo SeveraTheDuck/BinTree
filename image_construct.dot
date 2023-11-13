@@ -1,0 +1,35 @@
+digraph G
+{
+    rankdir = UD;
+    bgcolor = "#ff8080";
+    node  [style = filled, color = white];
+    edge  [color = "darkgreen", fontcolor = "blue", fontsize = 15];
+
+    subgraph cluster0
+    {
+        bgcolor = "#ffAAAA";        height  = 20        style   = filled;
+        label   = "My bin tree";
+
+        0 [shape = "Mrecord", label = "10"];
+        0 -> 1 [color = "#FF0000",weight = 2];
+        1 [shape = "Mrecord", label = "nil"]
+        0 -> 2 [color = "#FF0000",weight = 2];
+        2 [shape = "Mrecord", label = "17"];
+        2 -> 3 [color = "#FF0000",weight = 3];
+        3 [shape = "Mrecord", label = "15"];
+        3 -> 4 [color = "#FF0000",weight = 4];
+        4 [shape = "Mrecord", label = "12"];
+        4 -> 5 [color = "#FF0000",weight = 5];
+        5 [shape = "Mrecord", label = "nil"]
+        4 -> 6 [color = "#FF0000",weight = 5];
+        6 [shape = "Mrecord", label = "nil"]
+        3 -> 7 [color = "#FF0000",weight = 4];
+        7 [shape = "Mrecord", label = "nil"]
+        2 -> 8 [color = "#FF0000",weight = 3];
+        8 [shape = "Mrecord", label = "20"];
+        8 -> 9 [color = "#FF0000",weight = 4];
+        9 [shape = "Mrecord", label = "nil"]
+        8 -> 10 [color = "#FF0000",weight = 4];
+        10 [shape = "Mrecord", label = "nil"]
+    }
+}

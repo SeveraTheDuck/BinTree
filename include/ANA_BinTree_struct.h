@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../ANA_BinTree_config.h"
+#include "../../ANA_BinTree_config.h"
 
 typedef size_t ANA_BinTree_error_type;
 
