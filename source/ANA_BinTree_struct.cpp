@@ -58,16 +58,20 @@ ANA_BinTree_DestroySubtree (ANA_BinTree_node* const node)
     node->left   = nullptr;
     node->right  = nullptr;
 
-    if (node == node->parent->left)
+    if (node->parent)
     {
-        node->parent->left  = nullptr;
-    }
-    else
-    {
-        node->parent->right = nullptr;
-    }
+        if (node == node->parent->left)
+        {
+            node->parent->left  = nullptr;
+        }
 
-    node->parent = nullptr;
+        else
+        {
+            node->parent->right = nullptr;
+        }
+
+        node->parent = nullptr;
+    }
 
     free (node);
 
