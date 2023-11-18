@@ -40,16 +40,6 @@ ANA_BinTree_CtorNode   (const ANA_BinTree_data_type   data,
     new_node->right  = right;
     new_node->parent = parent;
 
-    #ifdef ANA_BinTree_AllocateData
-
-    ANA_BinTree_data_type alloc_data = (ANA_BinTree_data_type)
-                     calloc (1, sizeof (ANA_BinTree_data_type));
-    memcpy (alloc_data, &data,  sizeof (ANA_BinTree_data_type));
-
-    new_node->data = alloc_data;
-
-    #endif /* ANA_BinTree_AllocateData */
-
     return new_node;
 }
 
@@ -63,12 +53,6 @@ ANA_BinTree_DestroySubtree (ANA_BinTree_node* const node)
 
     ANA_BinTree_DestroySubtree (node->left);
     ANA_BinTree_DestroySubtree (node->right);
-
-    #ifdef ANA_BinTree_AllocateData
-
-    free (node->data);
-
-    #endif /* ANA_BinTree_AllocateData */
 
     node->data  = ANA_BinTree_POISON;
     node->left  = nullptr;
