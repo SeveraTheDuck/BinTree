@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-#include "../../ANA_BinTree_config.h"
+#include "../ANA_BinTree_config.h"
 
 typedef size_t ANA_BinTree_error_type;
 
@@ -14,6 +15,7 @@ enum ANA_BinTree_errors
     ANA_BINTREE_STRUCT_NULLPTR = 1 << 1,
     ANA_BINTREE_NODE_NULLPTR   = 1 << 2,
     /* something else? */
+    // check cycle?
 };
 
 struct ANA_BinTree_node

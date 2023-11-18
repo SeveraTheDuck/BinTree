@@ -40,6 +40,16 @@ ANA_BinTree_CtorNode   (const ANA_BinTree_data_type   data,
     new_node->right  = right;
     new_node->parent = parent;
 
+    #ifdef ANA_BinTree_AllocateData
+
+    ANA_BinTree_data_type alloc_data = (ANA_BinTree_data_type)
+                     calloc (1, sizeof (ANA_BinTree_data_type));
+    memcpy (alloc_data, &data,  sizeof (ANA_BinTree_data_type));
+
+    new_node->data = alloc_data;
+
+    #endif /* ANA_BinTree_AllocateData */
+
     return new_node;
 }
 
@@ -54,9 +64,15 @@ ANA_BinTree_DestroySubtree (ANA_BinTree_node* const node)
     ANA_BinTree_DestroySubtree (node->left);
     ANA_BinTree_DestroySubtree (node->right);
 
-    node->data   = ANA_BinTree_POISON;
-    node->left   = nullptr;
-    node->right  = nullptr;
+    #ifdef ANA_BinTree_AllocateData
+
+    free (node->data);
+
+    #endif /* ANA_BinTree_AllocateData */
+
+    node->data  = ANA_BinTree_POISON;
+    node->left  = nullptr;
+    node->right = nullptr;
 
     if (node->parent)
     {
@@ -96,36 +112,33 @@ ANA_BinTree_InsertSorted (      ANA_BinTree*          const tree,
 
     ANA_BinTree_node* node = tree->root;
 
+    ANA_BinTree_node* new_node =
+        ANA_BinTree_CtorNode (data, nullptr, nullptr, nullptr);
+
     while (true)
     {
         if (data <= node->data)
         {
             if (!node->left)
             {
+                node->left = new_node;
                 break;
             }
             node = node->left;
         }
+
         else
         {
             if (!node->right)
             {
+                node->right = new_node;
                 break;
             }
             node = node->right;
         }
     }
 
-    ANA_BinTree_node* new_node = ANA_BinTree_CtorNode (data, 0, 0, node);
-
-    if (data <= node->data)
-    {
-        node->left = new_node;
-    }
-    else
-    {
-        node->right = new_node;
-    }
+    new_node->parent = node;
 
     return new_node;
 }
