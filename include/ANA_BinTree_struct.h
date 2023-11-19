@@ -33,7 +33,9 @@ struct ANA_BinTree
 
     // Use this array if data is being allocated.
     // Allocate it and fill this array by yourself.
-    ANA_BinTree_data_type* allocated_data [MAX_NUM_OF_ALLOCATED_DATA];
+    // Make a destructor for this everything from this array.
+    // Most useful, if you use tree for pointers.
+    ANA_BinTree_data_type allocated_data [MAX_NUM_OF_ALLOCATED_DATA];
     size_t allocated_data_number;
 
     ANA_BinTree_error_type errors;
@@ -49,13 +51,8 @@ ANA_BinTree_CtorNode   (const ANA_BinTree_data_type   data,
                               ANA_BinTree_node* const right,
                               ANA_BinTree_node* const parent);
 
-// Do not use it to destroy the whole tree if data was allocated!
-// Use ANA_BinTree_Dtor instead.
 ANA_BinTree_error_type
 ANA_BinTree_DestroySubtree (ANA_BinTree_node* const node);
-
-void
-ANA_BinTree_Dtor (ANA_BinTree* const tree);
 
 ANA_BinTree_node*
 ANA_BinTree_InsertSorted (      ANA_BinTree*          const tree,

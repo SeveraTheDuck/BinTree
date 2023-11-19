@@ -14,7 +14,7 @@ ANA_BinTree_Ctor       (      ANA_BinTree*          const tree,
                 allocated_data_index < MAX_NUM_OF_ALLOCATED_DATA;
                 allocated_data_index++)
     {
-        tree->allocated_data [allocated_data_index] = nullptr;
+        tree->allocated_data [allocated_data_index] = ANA_BinTree_POISON;
     }
 
     tree->root = ANA_BinTree_CtorNode (data, nullptr, nullptr, nullptr);
@@ -83,19 +83,6 @@ ANA_BinTree_DestroySubtree (ANA_BinTree_node* const node)
     free (node);
 
     return ANA_BINTREE_NO_ERRORS;
-}
-
-void
-ANA_BinTree_Dtor (ANA_BinTree* const tree)
-{
-    ANA_BinTree_DestroySubtree (tree->root);
-
-    for (size_t allocated_data_index = 0;
-                allocated_data_index < tree->allocated_data_number;
-                allocated_data_index++)
-    {
-        free (tree->allocated_data [allocated_data_index]);
-    }
 }
 
 ANA_BinTree_node*
