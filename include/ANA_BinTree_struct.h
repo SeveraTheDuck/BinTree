@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../../ANA_BinTree_config.h"
+#include "../ANA_BinTree_config.h"
 
 typedef size_t ANA_BinTree_error_type;
 
@@ -67,4 +67,4 @@ ANA_BinTree_PrintSubtreePostOrder (const ANA_BinTree_node* const node);
 void
 ANA_BinTree_PrintSubtreeInOrder   (const ANA_BinTree_node* const node);
 
-#endif
+#endif /* ANA_BIN_TREE_STRUCT */

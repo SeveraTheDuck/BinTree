@@ -7,4 +7,4 @@
 void
 ANA_BinTree_MakeTreeImage (const ANA_BinTree* const tree);
 
-#endif
+#endif /* ANA_BIN_TREE_MAKE_IMAGE_H */
