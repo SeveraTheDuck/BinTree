@@ -42,8 +42,8 @@ struct ANA_BinTree
 };
 
 ANA_BinTree_error_type
-ANA_BinTree_Ctor       (      ANA_BinTree*          const tree,
-                        const ANA_BinTree_data_type       data);
+ANA_BinTree_Ctor       (      ANA_BinTree* const    tree,
+                        const ANA_BinTree_data_type data = ANA_BinTree_POISON);
 
 ANA_BinTree_node*
 ANA_BinTree_CtorNode   (const ANA_BinTree_data_type   data,
